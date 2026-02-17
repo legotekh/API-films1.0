@@ -1,13 +1,24 @@
 import { useState,useEffect } from 'react'
 import './index.css'
-import MovieCard , { type Movie} from './MovieCard';
+import MovieCard from './MovieCard';
+import {type Movie} from './types'
+import {useMovies} from './useMovies'
 
 function App() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [searchFilm, setSearchFilm] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-  const [showFavorites, setShowFavorites] = useState<boolean>(false);
+  const {
+        movies,
+        searchFilm,
+        loading,
+        selectedMovie,
+        showFavorites,
+        setSearchFilm,
+        setSelectedMovie,
+        setShowFavorites,
+        getMovie,
+        onMovieSelect
+    } = useMovies();
+
+
 
   const [favorites,setFavorites] = useState<Movie[]>(() => {
     const saved = localStorage.getItem('my-favorites');
@@ -15,7 +26,6 @@ function App() {
     return [];
   })
 
-  const apikey = "8c16b35e";
 
   useEffect(() => {
     localStorage.setItem('my-favorites', JSON.stringify(favorites));
@@ -29,41 +39,6 @@ function App() {
       setFavorites(newList);
     };
   }
-
-  async function getMovie() {
-    
-    try {
-      setLoading(true);
-      const response = await fetch(`https://www.omdbapi.com/?s=${searchFilm}&apikey=${apikey}`);
-      const data = await response.json();
-      
-      if (data.Search) {
-        setMovies(data.Search);
-      } else {
-        alert("Фільм не знайдено! 🤷‍♂️");
-      }
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-
-  async function onMovieSelect(id : string) {
-    
-    try {
-      setLoading(true);
-      const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apikey}`);
-      const data = await response.json();
-      setSelectedMovie(data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-    console.log(favorites);
 
   return (
     <div className="app">

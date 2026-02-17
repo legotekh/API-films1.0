@@ -1,10 +1,4 @@
-export interface Movie {
-    Title : string;
-    Year: string;
-    imdbID: string;
-    Poster: string;
-    Plot?: string;
-}
+import {type Movie} from './types'
 
 interface MovieCardProps {
     movie : Movie;

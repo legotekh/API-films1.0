@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { type Movie } from './types';
 
 const apikey = "8c16b35e";
-
-
 
 export  function useMovies() {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -11,17 +9,20 @@ export  function useMovies() {
     const [loading, setLoading] = useState<boolean>(false);
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
     const [showFavorites, setShowFavorites] = useState<boolean>(false);
+    const [error, setError] = useState<string>('');
+
 
     async function getMovie() {
     try {
     setLoading(true);
+    setError('');
     const response = await fetch(`https://www.omdbapi.com/?s=${searchFilm}&apikey=${apikey}`);
     const data = await response.json();
     
     if (data.Search) {
         setMovies(data.Search);
     } else {
-        alert("Фільм не знайдено! 🤷‍♂️");
+        setError(data.Error);
     }
     } catch (err) {
     console.log(err);
@@ -45,12 +46,23 @@ async function onMovieSelect(id : string) {
     }
 }
 
+useEffect(() => {
+    if(searchFilm.length < 3){
+        return
+    }
+    const timer = setTimeout(() => {
+        getMovie();
+    },1000)
+    return () => clearTimeout(timer);
+},[searchFilm])
+
     return {
         movies,
         searchFilm,
         loading,
         selectedMovie,
         showFavorites,
+        error,
         setSearchFilm,
         setSelectedMovie,
         setShowFavorites,

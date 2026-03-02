@@ -2,6 +2,7 @@ import './index.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { Home } from './pages/Home';
+import { MovieDetails } from './pages/MovieDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/favourites' element={<FavoritesPage />} />
+        <Route path='/movie/:id' element={<MovieDetails/>}/>
       </Routes>
     </div>
   );

@@ -6,10 +6,10 @@ const apikey = "8c16b35e";
 export  function useMovies() {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [searchFilm, setSearchFilm] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(false);
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
     const [showFavorites, setShowFavorites] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
 
     async function getMovie() {

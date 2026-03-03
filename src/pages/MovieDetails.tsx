@@ -30,6 +30,12 @@ export function MovieDetails() {
         fetchMovie();
     }, [id]);
 
+    useEffect(() => {
+        if(movie !== null){
+            document.title = movie.Title;
+        }
+    },[movie])
+
     return (
         <div style={{ color: 'white', padding: '20px' }}>
             <h2>ID: {id}</h2>

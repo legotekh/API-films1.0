@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MovieCard from "../MovieCard";
 import { type Movie } from "../types";
 import { useMovies } from "../useMovies";
+import { useNavigate } from 'react-router-dom';
 
 export function Home() {
 const {
@@ -14,6 +15,8 @@ const {
     setSelectedMovie,
     onMovieSelect,
 } = useMovies();
+
+const navigate = useNavigate();
 
 const [favorites, setFavorites] = useState<Movie[]>(() => {
     const saved = localStorage.getItem("my-favorites");
@@ -62,7 +65,7 @@ return (
                 <MovieCard
                     key={movie.imdbID}
                     movie={movie}
-                    onMovieSelect={onMovieSelect}
+                    onMovieSelect={() => navigate(`/movie/${movie.imdbID}`)}
                     addToLike={addToLike}
                     amIFav={isFavorite}
                     buttonLike={true}
@@ -72,17 +75,6 @@ return (
             </div>
         )}
         </>
-    )}
-
-    {selectedMovie && (
-        <div className="overlay">
-        <div className="modal">
-            <h2>{selectedMovie.Title}</h2>
-            <p>{selectedMovie.Plot}</p>
-            <img src={selectedMovie.Poster} alt="Poster" />
-            <button onClick={() => setSelectedMovie(null)}>Закрити ❌</button>
-        </div>
-        </div>
     )}
     </div>
 );

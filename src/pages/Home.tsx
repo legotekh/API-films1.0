@@ -5,6 +5,7 @@ import { useMovies } from "../useMovies";
 import { useNavigate } from 'react-router-dom';
 
 export function Home() {
+
 const {
     movies,
     searchFilm,
@@ -12,8 +13,6 @@ const {
     selectedMovie,
     error,
     setSearchFilm,
-    setSelectedMovie,
-    onMovieSelect,
 } = useMovies();
 
 const navigate = useNavigate();

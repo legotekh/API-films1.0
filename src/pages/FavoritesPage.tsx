@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import MovieCard from "../MovieCard";
 import { type Movie } from "../types";
-import { useMovies } from "../useMovies";
+import { useNavigate } from "react-router-dom";
 
 export function FavoritesPage() {
-const { selectedMovie, setSelectedMovie, onMovieSelect } = useMovies();
+
+const Maps = useNavigate();
 
 const [favorites, setFavorites] = useState<Movie[]>(() => {
     const saved = localStorage.getItem("my-favorites");
@@ -39,20 +40,9 @@ return (
             buttonLike={true}
             addToLike={addToLike}
             amIFav={true}
-            onMovieSelect={onMovieSelect}
+            onMovieSelect={() => Maps(`/movie/${movie.imdbID}`)}
             />
         ))}
-        </div>
-    )}
-
-    {selectedMovie && (
-        <div className="overlay">
-        <div className="modal">
-            <h2>{selectedMovie.Title}</h2>
-            <p>{selectedMovie.Plot}</p>
-            <img src={selectedMovie.Poster} alt="Poster" />
-            <button onClick={() => setSelectedMovie(null)}>Закрити ❌</button>
-        </div>
         </div>
     )}
     </div>

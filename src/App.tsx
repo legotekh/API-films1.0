@@ -4,6 +4,7 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { Home } from './pages/Home';
 import { MovieDetails } from './pages/MovieDetails';
 
+
 function App() {
   return (
     <div className="app">
@@ -19,7 +20,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/favourites' element={<FavoritesPage />} />
-        <Route path='/movie/:id' element={<MovieDetails/>}/>
+        <Route path='/movie/:id' element={<MovieDetails/>} />
       </Routes>
     </div>
   );

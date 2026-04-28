@@ -7,7 +7,7 @@
 ## 🖼 Screenshots
 
 ### Головна сторінка
-![Main Screen](../images/home.png)
+![Main Screen](./images/home.png)
 
 ### Сторінка результату пошуку
 ![Movie Search](../images/details.png)

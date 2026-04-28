@@ -1,12 +1,49 @@
-# React + TypeScript + Vite
+# 🎬 Movie Sync & Discovery Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Професійний інструмент для автоматизованої синхронізації кіноданих, побудований на базі Node.js. Система забезпечує безшовний імпорт даних із зовнішніх API у локальне сховище з можливістю подальшого керування та фільтрації через веб-інтерфейс.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖼 Screenshots
 
-## React Compiler
+### Головна сторінка
+![Main Screen](../images/home.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Сторінка результату пошуку
+![Movie Search](../images/details.png)
+
+### Сторінка фаворитів
+![Movie Details](../images/fav.png)
+
+### Сторінка деталей
+![Movie Details](../images/details.png)
+
+---
+
+## 🚀 Основний функціонал
+
+* **API Synchronization:** Автоматичне отримання актуальних даних про фільми через інтеграцію з зовнішніми REST API.
+* **Structured Storage:** Трансформація "сирих" JSON-відповідей у структуровану реляційну базу даних SQLite.
+* **Advanced Filtering:** Система фільтрації на клієнтській та серверній сторонах для швидкого пошуку потрібного контенту.
+* **Web Dashboard:** Лаконічний та інтуїтивно зрозумілий UI для візуалізації синхронізованої бібліотеки.
+
+---
+
+## 🛠 Технічний стек
+
+| Технологія | Використання |
+| :--- | :--- |
+| **React** | Побудова користувацького інтерфейсу та компонентна архітектура |
+| **TypeScript** | Статична типізація для надійнішого коду та автодоповнення |
+| **Fetch API / Axios** | Асинхронні запити до стороннього кіно-API (REST) |
+| **HTML5 / CSS3** | Верстка, стилізація та адаптивний дизайн |
+
+---
+
+## 🏗 Архітектура застосунку
+
+Проєкт побудований за класичною фронтенд-архітектурою з акцентом на роботу зі станом:
+1.  **API Integration Layer:** Відповідає за комунікацію із зовнішнім сервісом (отримання списків фільмів, пошук, деталі).
+2.  **State Management:** Управління даними всередині React за допомогою хуків (збереження завантажених фільмів, обробка стану завантаження та помилок).
+3.  **UI Components:** Модульні React-компоненти (картки фільмів, панель пошуку, сітка результатів), які рендерять отримані дані для користувача.
+

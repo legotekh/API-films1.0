@@ -10,13 +10,13 @@
 ![Main Screen](./images/home.png)
 
 ### Сторінка результату пошуку
-![Movie Search](../images/details.png)
+![Movie Search](./images/details.png)
 
 ### Сторінка фаворитів
-![Movie Details](../images/fav.png)
+![Movie Details](./images/fav.png)
 
 ### Сторінка деталей
-![Movie Details](../images/details.png)
+![Movie Details](./images/details.png)
 
 ---
 
